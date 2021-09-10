@@ -25,8 +25,8 @@ ANY player that has an option turned on in their trainers for (All peds ignore) 
 4. In/OUT Of Vehicle    | Numpad 6
 
 ## To-Do List
-1. Create function where K9 searches if player has drugs
+* Create function where K9 searches if player has drugs
 
 ## Credits
-Jakats for the QBCore port (https://github.com/Jakats/K9) 
-Burk for original K9 script (https://forum.cfx.re/t/release-k9-script-working-updated/1694003) 
+* Jakats for the QBCore port (https://github.com/Jakats/K9)
+* Burk for original K9 script (https://forum.cfx.re/t/release-k9-script-working-updated/1694003)
