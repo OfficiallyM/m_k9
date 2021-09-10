@@ -26,6 +26,8 @@ ANY player that has an option turned on in their trainers for (All peds ignore) 
 
 ## To-Do List
 * Create function where K9 searches if player has drugs
+* Fix attacking players
+* Add support for attacking non-player peds
 
 ## Credits
 * Jakats for the QBCore port (https://github.com/Jakats/K9)
