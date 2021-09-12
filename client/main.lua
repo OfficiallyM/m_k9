@@ -339,40 +339,6 @@ Citizen.CreateThread(function()
     TriggerServerEvent("K9:SendLanguage")
 end)
 
--- Controls menu.
--- Citizen.CreateThread(function()
---     while true do
---         Citizen.Wait(3)
-
---         -- Trigger opens menu.
---         if IsControlJustPressed(1, 110) then
---             TriggerServerEvent("K9:RequestOpenMenu")
---         end
-
---         -- Trigger attack.
---         if IsControlJustPressed(1, 111) and IsPlayerFreeAiming(PlayerId()) then
---             local bool, target = GetEntityPlayerIsFreeAimingAt(PlayerId())
-
---             if bool then
---                 if IsEntityAPed(target) then
---                     TriggerEvent("K9:ToggleAttack", target)
---                 end
---             end
---         end
-
---         -- Trigger follow.
---         if IsControlJustPressed(1, 108) and not IsPlayerFreeAiming(PlayerId()) then
---             TriggerEvent("K9:ToggleFollow")
---         end
-
---         if IsControlJustPressed(1, 109) then
---             if spawned_ped ~= nil then
---                 TriggerServerEvent("K9:RequestVehicleToggle")
---             end
---         end
---     end
--- end)
-
 -- Cleanup.
 Citizen.CreateThread(function()
     while true do
