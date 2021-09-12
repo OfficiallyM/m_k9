@@ -11,12 +11,13 @@ ANY player that has an option turned on in their trainers for (All peds ignore) 
 4. Start server
 
 ## Config
-1. K9Config.VehicleRestriction  | true / false
-2. K9Config.VehiclesList        | Vehicle Model Names
-3. K9Config.OpenDoorsOnSearch   | true / false
-4. K9Config.Items               | Drug Item Names
-5. K9Config.LanguageChoice      | Prefered language (Default - English)
-6. K9Config.Language            | Translations
+1. Config.VehicleRestriction  | true / false
+2. Config.VehiclesList        | Vehicle Model Names
+3. Config.OpenDoorsOnSearch   | true / false
+4. Config.Items               | Drug Item Names
+5. Config.LanguageChoice      | Prefered language (Default - English)
+6. Config.Language            | Translations
+7. Config.KeyDefaults         | Default key bindings
 
 ## Credits
 * Jakats for the QBCore port (https://github.com/Jakats/K9)
