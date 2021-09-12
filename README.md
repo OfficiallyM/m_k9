@@ -18,12 +18,6 @@ ANY player that has an option turned on in their trainers for (All peds ignore) 
 5. K9Config.LanguageChoice      | Prefered language (Default - English)
 6. K9Config.Language            | Translations
 
-## Controls
-1. OPEN MENU            | Numpad 5
-2. FOLLOW               | Numpad 4
-3. ATTACK               | While aiming press Numpad 8
-4. In/OUT Of Vehicle    | Numpad 6
-
 ## Credits
 * Jakats for the QBCore port (https://github.com/Jakats/K9)
 * Burk for original K9 script (https://forum.cfx.re/t/release-k9-script-working-updated/1694003)

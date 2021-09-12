@@ -2,7 +2,7 @@ RegisterServerEvent("K9:SendLanguage")
 AddEventHandler("K9:SendLanguage", function()
     local src = source
 
-    TriggerClientEvent("K9:UpdateLanguage", src, K9Config.Languages[K9Config.LanguageChoice])
+    TriggerClientEvent("K9:UpdateLanguage", src, Config.Languages[Config.LanguageChoice])
 end)
 
 RegisterServerEvent("K9:RequestOpenMenu")
@@ -19,14 +19,14 @@ RegisterServerEvent("K9:RequestVehicleToggle")
 AddEventHandler("K9:RequestVehicleToggle", function()
     local src = source
 
-    TriggerClientEvent("K9:ToggleVehicle", src, K9Config.VehicleRestriction, K9Config.VehiclesList)
+    TriggerClientEvent("K9:ToggleVehicle", src, Config.VehicleRestriction, Config.VehiclesList)
 end)
 
 RegisterServerEvent("K9:RequestItems")
 AddEventHandler("K9:RequestItems", function()
     local src = source
 
-    TriggerClientEvent("K9:SearchVehicle", src, K9Config.OpenDoorsOnSearch)
+    TriggerClientEvent("K9:SearchVehicle", src, Config.OpenDoorsOnSearch)
 end)
 
 RegisterServerEvent("K9:SearchItems")
@@ -38,7 +38,7 @@ AddEventHandler("K9:SearchItems", function(carplate, k9_name)
     local trunkitems = GetOwnedVehicleItems(carplate)
     local gloveboxitems = GetOwnedVehicleGloveboxItems(carplate)
 
-    for v, drug in pairs(K9Config.Items) do
+    for v, drug in pairs(Config.Items) do
         for k, item in pairs(trunkitems) do
             if item == drug then
                 drugs = true

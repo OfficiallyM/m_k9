@@ -1,16 +1,16 @@
-K9Config = {}
-K9Config = setmetatable(K9Config, {})
+Config = {}
+Config = setmetatable(Config, {})
 
 -- Restricts the dog to getting into certain vehicles
-K9Config.VehicleRestriction = false
-K9Config.VehiclesList = {
+Config.VehicleRestriction = false
+Config.VehiclesList = {
 	
 }
 
-K9Config.OpenDoorsOnSearch = true
+Config.OpenDoorsOnSearch = true
 
 -- Used for Random Search Type --
-K9Config.Items = {
+Config.Items = {
 	"joint",
 	"cokebaggy",
 	"crack_baggy",
@@ -29,8 +29,8 @@ K9Config.Items = {
 }
 
 -- Language --
-K9Config.LanguageChoice = "English"
-K9Config.Languages = {
+Config.LanguageChoice = "English"
+Config.Languages = {
 	["English"] = {
 		follow = "Come",
 		stop = "Heel",
@@ -38,4 +38,18 @@ K9Config.Languages = {
 		enter = "In",
 		exit = "Out"
 	}
+}
+
+Config.KeyDefaults = {
+	-- Open K9 menu.
+	open_menu = "numpad5",
+
+	-- Toggle K9 attacking.
+	toggle_attack = "numpad8",
+
+	-- Toggle K9 following/heeling.
+	toggle_follow = "numpad4",
+
+	-- Toggle K9 entering/exiting vehicles.
+	toggle_vehicle = "numpad6",
 }

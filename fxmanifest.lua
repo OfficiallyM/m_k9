@@ -20,9 +20,14 @@ files {
 }
 
 server_scripts { 
-	'server/main.lua',
-	'config.lua'
+    'server/main.lua',
 }
 
-shared_script '@qb-core/import.lua'
-client_script 'client/main.lua'
+shared_scripts {
+    '@qb-core/import.lua',
+    'config.lua',
+} 
+
+client_scripts {
+    'client/main.lua' 
+} 

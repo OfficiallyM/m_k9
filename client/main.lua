@@ -1,5 +1,4 @@
 -- Variables.
-local just_started = true
 local k9_name = "K9 Dog"
 local spawned_ped = nil
 local following = false
@@ -263,120 +262,121 @@ AddEventHandler("K9:ToggleAttack", function(target)
     end
 end)
 
-    -- Triggers K9 to search vehicle.
-    RegisterNetEvent("K9:SearchVehicle")
-    AddEventHandler("K9:SearchVehicle", function(openDoors)
-        local vehicle = GetVehicleAheadOfPlayer()
-        Citizen.Trace(tostring(vehicle))
-        if vehicle ~= 0 and not searching then
-            local carplate = GetVehicleNumberPlateText(vehicle)
-            if carplate ~= nil then
-                searching = true
+-- Triggers K9 to search vehicle.
+RegisterNetEvent("K9:SearchVehicle")
+AddEventHandler("K9:SearchVehicle", function(openDoors)
+    local vehicle = GetVehicleAheadOfPlayer()
+    Citizen.Trace(tostring(vehicle))
+    if vehicle ~= 0 and not searching then
+        local carplate = GetVehicleNumberPlateText(vehicle)
+        if carplate ~= nil then
+            searching = true
 
-                QBCore.Functions.Notify(k9_name .. " has began searching...", "primary", 5000) -- [text] = message, [type] = primary | error | success, [length] = time till fadeout.
-                
-                if openDoors then
-                    SetVehicleDoorOpen(vehicle, 0, 0, 0)
-                    SetVehicleDoorOpen(vehicle, 1, 0, 0)
-                    SetVehicleDoorOpen(vehicle, 2, 0, 0)
-                    SetVehicleDoorOpen(vehicle, 3, 0, 0)
-                    SetVehicleDoorOpen(vehicle, 4, 0, 0)
-                    SetVehicleDoorOpen(vehicle, 5, 0, 0)
-                    SetVehicleDoorOpen(vehicle, 6, 0, 0)
-                    SetVehicleDoorOpen(vehicle, 7, 0, 0)
-                end
-
-                -- Back right.
-                local offsetOne = GetOffsetFromEntityInWorldCoords(vehicle, 2.0, -2.0, 0.0)
-                TaskGoToCoordAnyMeans(spawned_ped, offsetOne.x, offsetOne.y, offsetOne.z, 5.0, 0, 0, 1, 10.0)
-
-                Citizen.Wait(7000)
-
-                -- Front right.
-                local offsetTwo = GetOffsetFromEntityInWorldCoords(vehicle, 2.0, 2.0, 0.0)
-                TaskGoToCoordAnyMeans(spawned_ped, offsetTwo.x, offsetTwo.y, offsetTwo.z, 5.0, 0, 0, 1, 10.0)
-
-                Citizen.Wait(7000)
-
-                -- Front left.
-                local offsetThree = GetOffsetFromEntityInWorldCoords(vehicle, -2.0, 2.0, 0.0)
-                TaskGoToCoordAnyMeans(spawned_ped, offsetThree.x, offsetThree.y, offsetThree.z, 5.0, 0, 0, 1, 10.0)
-
-                Citizen.Wait(7000)
-
-                -- Front right.
-                local offsetFour = GetOffsetFromEntityInWorldCoords(vehicle, -2.0, -2.0, 0.0)
-                TaskGoToCoordAnyMeans(spawned_ped, offsetFour.x, offsetFour.y, offsetFour.z, 5.0, 0, 0, 1, 10.0)
-
-                Citizen.Wait(7000)
-
-                if openDoors then
-                    SetVehicleDoorsShut(vehicle, 0)
-                end
-
-                TriggerServerEvent("K9:SearchItems", carplate, k9_name)
-                searching = false
-            else
-                QBCore.Functions.Notify("There is no vehicle nearby", "error", 5000) -- [text] = message, [type] = primary | error | success, [length] = time till fadeout.
+            QBCore.Functions.Notify(k9_name .. " has began searching...", "primary", 5000) -- [text] = message, [type] = primary | error | success, [length] = time till fadeout.
+            
+            if openDoors then
+                SetVehicleDoorOpen(vehicle, 0, 0, 0)
+                SetVehicleDoorOpen(vehicle, 1, 0, 0)
+                SetVehicleDoorOpen(vehicle, 2, 0, 0)
+                SetVehicleDoorOpen(vehicle, 3, 0, 0)
+                SetVehicleDoorOpen(vehicle, 4, 0, 0)
+                SetVehicleDoorOpen(vehicle, 5, 0, 0)
+                SetVehicleDoorOpen(vehicle, 6, 0, 0)
+                SetVehicleDoorOpen(vehicle, 7, 0, 0)
             end
+
+            -- Back right.
+            local offsetOne = GetOffsetFromEntityInWorldCoords(vehicle, 2.0, -2.0, 0.0)
+            TaskGoToCoordAnyMeans(spawned_ped, offsetOne.x, offsetOne.y, offsetOne.z, 5.0, 0, 0, 1, 10.0)
+
+            Citizen.Wait(7000)
+
+            -- Front right.
+            local offsetTwo = GetOffsetFromEntityInWorldCoords(vehicle, 2.0, 2.0, 0.0)
+            TaskGoToCoordAnyMeans(spawned_ped, offsetTwo.x, offsetTwo.y, offsetTwo.z, 5.0, 0, 0, 1, 10.0)
+
+            Citizen.Wait(7000)
+
+            -- Front left.
+            local offsetThree = GetOffsetFromEntityInWorldCoords(vehicle, -2.0, 2.0, 0.0)
+            TaskGoToCoordAnyMeans(spawned_ped, offsetThree.x, offsetThree.y, offsetThree.z, 5.0, 0, 0, 1, 10.0)
+
+            Citizen.Wait(7000)
+
+            -- Front right.
+            local offsetFour = GetOffsetFromEntityInWorldCoords(vehicle, -2.0, -2.0, 0.0)
+            TaskGoToCoordAnyMeans(spawned_ped, offsetFour.x, offsetFour.y, offsetFour.z, 5.0, 0, 0, 1, 10.0)
+
+            Citizen.Wait(7000)
+
+            if openDoors then
+                SetVehicleDoorsShut(vehicle, 0)
+            end
+
+            TriggerServerEvent("K9:SearchItems", carplate, k9_name)
+            searching = false
         else
             QBCore.Functions.Notify("There is no vehicle nearby", "error", 5000) -- [text] = message, [type] = primary | error | success, [length] = time till fadeout.
         end
-    end)
+    else
+        QBCore.Functions.Notify("There is no vehicle nearby", "error", 5000) -- [text] = message, [type] = primary | error | success, [length] = time till fadeout.
+    end
+end)
 
 --Threads.
 
--- Controls menu.
+-- Initialisation thread.
 Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(3)
+    RegisterKeyBinds()
 
-        -- Trigger opens menu.
-        if IsControlJustPressed(1, 110) then
-            TriggerServerEvent("K9:RequestOpenMenu")
-        end
-
-        -- Trigger attack.
-        if IsControlJustPressed(1, 111) and IsPlayerFreeAiming(PlayerId()) then
-            local bool, target = GetEntityPlayerIsFreeAimingAt(PlayerId())
-
-            if bool then
-                if IsEntityAPed(target) then
-                    TriggerEvent("K9:ToggleAttack", target)
-                end
-            end
-        end
-
-        -- Trigger follow.
-        if IsControlJustPressed(1, 108) and not IsPlayerFreeAiming(PlayerId()) then
-            TriggerEvent("K9:ToggleFollow")
-        end
-
-        if IsControlJustPressed(1, 109) then
-            if spawned_ped ~= nil then
-                TriggerServerEvent("K9:RequestVehicleToggle")
-            end
-        end
-    end
+    -- Setup settings.
+    Citizen.Wait(1000)
+    local resource = GetCurrentResourceName()
+    SendNUIMessage({
+        type = "update_resource_name",
+        name = resource
+    })
+    TriggerServerEvent("K9:SendLanguage")
 end)
+
+-- Controls menu.
+-- Citizen.CreateThread(function()
+--     while true do
+--         Citizen.Wait(3)
+
+--         -- Trigger opens menu.
+--         if IsControlJustPressed(1, 110) then
+--             TriggerServerEvent("K9:RequestOpenMenu")
+--         end
+
+--         -- Trigger attack.
+--         if IsControlJustPressed(1, 111) and IsPlayerFreeAiming(PlayerId()) then
+--             local bool, target = GetEntityPlayerIsFreeAimingAt(PlayerId())
+
+--             if bool then
+--                 if IsEntityAPed(target) then
+--                     TriggerEvent("K9:ToggleAttack", target)
+--                 end
+--             end
+--         end
+
+--         -- Trigger follow.
+--         if IsControlJustPressed(1, 108) and not IsPlayerFreeAiming(PlayerId()) then
+--             TriggerEvent("K9:ToggleFollow")
+--         end
+
+--         if IsControlJustPressed(1, 109) then
+--             if spawned_ped ~= nil then
+--                 TriggerServerEvent("K9:RequestVehicleToggle")
+--             end
+--         end
+--     end
+-- end)
 
 -- Cleanup.
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-
-        -- Setting K9 settings.
-        if just_started then
-            Citizen.Wait(1000)
-            local resource = GetCurrentResourceName()
-            SendNUIMessage({
-                type = "update_resource_name",
-                name = resource
-            })
-            just_started = false
-            TriggerServerEvent("K9:SendLanguage")
-        end
-
         -- Deletes K9 when you die.
         if spawned_ped ~= nil and IsEntityDead(GetLocalPed()) then
             TriggerEvent("K9:ToggleK9")
@@ -391,6 +391,45 @@ Citizen.CreateThread(function()
 end)
 
 -- Extra functions.
+
+-- Handle customisable keybinds.
+function RegisterKeyBinds()
+    -- K9 Menu.
+    RegisterCommand("open_menu", function()
+        TriggerServerEvent("K9:RequestOpenMenu")
+    end)
+    RegisterKeyMapping("open_menu", "Open K9 menu", "keyboard", Config.KeyDefaults.open_menu)
+
+    -- Attacking.
+    RegisterCommand("toggle_attack", function()
+        if IsPlayerFreeAiming(PlayerId()) then
+            local bool, target = GetEntityPlayerIsFreeAimingAt(PlayerId())
+
+            if bool then
+                if IsEntityAPed(target) then
+                    TriggerEvent("K9:ToggleAttack", target)
+                end
+            end
+        end
+    end)
+    RegisterKeyMapping("toggle_attack", "Toggle K9 attack", "keyboard", Config.KeyDefaults.toggle_attack)
+
+    -- Follow/heel.
+    RegisterCommand("toggle_follow", function()
+        if not IsPlayerFreeAiming(PlayerId()) then
+            TriggerEvent("K9:ToggleFollow")
+        end
+    end)
+    RegisterKeyMapping("toggle_follow", "Toggle K9 following", "keyboard", Config.KeyDefaults.toggle_follow)
+
+    -- Get in/out of Vehicle.
+    RegisterCommand("toggle_vehicle", function()
+        if spawned_ped ~= nil then
+            TriggerServerEvent("K9:RequestVehicleToggle")
+        end
+    end)
+    RegisterKeyMapping("toggle_vehicle", "Toggle K9 vehicle entry/exit", "keyboard", Config.KeyDefaults.toggle_vehicle)    
+end
 
 -- Gets local ped.
 function GetLocalPed()
